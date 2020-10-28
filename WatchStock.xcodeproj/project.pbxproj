@@ -21,6 +21,7 @@
 		5DB467F02533FDBE0027FD2F /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB467EF2533FDBE0027FD2F /* Stock.swift */; };
 		5DB467F82534113C0027FD2F /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB467F72534113C0027FD2F /* StockViewModel.swift */; };
 		5DB467FA253411CA0027FD2F /* StockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB467F9253411CA0027FD2F /* StockView.swift */; };
+		5DB5572E2549587C0055E767 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5572D2549587C0055E767 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		5DB467EF2533FDBE0027FD2F /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		5DB467F72534113C0027FD2F /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
 		5DB467F9253411CA0027FD2F /* StockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockView.swift; sourceTree = "<group>"; };
+		5DB5572D2549587C0055E767 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			children = (
 				5DB467FB2534130D0027FD2F /* Compare */,
 				5DB467F42534101C0027FD2F /* Stock */,
+				5DB5572D2549587C0055E767 /* LoadingView.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				5DB467BE2531E1E00027FD2F /* AppDelegate.swift in Sources */,
 				5DB467C02531E1E00027FD2F /* SceneDelegate.swift in Sources */,
 				5DB467FA253411CA0027FD2F /* StockView.swift in Sources */,
+				5DB5572E2549587C0055E767 /* LoadingView.swift in Sources */,
 				5DB467C22531E1E00027FD2F /* ContentView.swift in Sources */,
 				5D8A3E4F2534356100A0FA59 /* CompareViewModel.swift in Sources */,
 				5DB467F82534113C0027FD2F /* StockViewModel.swift in Sources */,

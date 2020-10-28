@@ -17,20 +17,22 @@ struct CompareView: View {
 
     var body: some View {
         NavigationView {
-            GeometryReader { metrics in
-                VStack {
-                    HStack {
-                        HeaderView(compareVM: self.compareVM, stockA: self.stockA, stockB: self.stockB, stockC: self.stockC)
-                    }.frame(height: metrics.size.height * 0.15)
-                    
-                    List {
-                        ForEach(0..<self.compareVM.higest().count, id: \.self) { iterator in
-                            VStack {
-                                BodyView(compareVM: self.compareVM, stockA: self.stockA, stockB: self.stockB, stockC: self.stockC, i: iterator)
-                            }.frame(height: 100,alignment: .leading)
-                        }
-                    }.frame(height: metrics.size.height * 0.9, alignment: .leading)
-                }.navigationBarTitle(self.compareVM.title)
+            LoadingView(isShowing: .constant(self.compareVM.loading)) {
+                GeometryReader { metrics in
+                    VStack {
+                        HStack {
+                            HeaderView(compareVM: self.compareVM, stockA: self.stockA, stockB: self.stockB, stockC: self.stockC)
+                        }.frame(height: metrics.size.height * 0.15)
+                        
+                        List {
+                            ForEach(0..<self.compareVM.higest().count, id: \.self) { iterator in
+                                VStack {
+                                    BodyView(compareVM: self.compareVM, stockA: self.stockA, stockB: self.stockB, stockC: self.stockC, i: iterator)
+                                }.frame(height: 100,alignment: .leading)
+                            }
+                        }.frame(height: metrics.size.height * 0.9, alignment: .leading)
+                    }.navigationBarTitle(self.compareVM.title)
+                }
             }
         }
     }

@@ -10,10 +10,10 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var selected = 0
+        
     var stockVM = StockViewModel()
     var compareVM = CompareViewModel()
-
-    @State private var selected = 0
 
     var body: some View {
         GeometryReader { metrics in

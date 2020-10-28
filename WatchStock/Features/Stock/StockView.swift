@@ -13,42 +13,44 @@ struct StockView: View {
         
     var body: some View {
         NavigationView {
-            VStack {
-                SearchbarView(stockVM: stockVM)
-                List {
-                    HStack {
-                        Button(action: {
-                            self.stockVM.byDate()
-                        }){
-                            Text("Date")
-                            }.frame(width: 100, alignment: .leading).buttonStyle(BorderlessButtonStyle())
-                        Button(action: {
-                            self.stockVM.byOpen()
-                        }){
-                            Text("Open")
-                        }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
-                        Button(action: {
-                            self.stockVM.byHigh()
-                        }){
-                            Text("High")
-                            }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
-                        Button(action: {
-                            self.stockVM.byLow()
-                        }){
-                            Text("Low")
-                            }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
-                    }
-                    ForEach(stockVM.stocks) { stock in
+            LoadingView(isShowing: .constant(stockVM.loading)) {
+                VStack {
+                    SearchbarView(stockVM: self.stockVM)
+                    List {
                         HStack {
-                            Text(stock.date).frame(width: 100, height: 50, alignment: .trailing)
-                            Text(stock.open).frame(width: 80, alignment: .trailing)
-                            Text(stock.high).frame(width: 80, alignment: .trailing)
-                            Text(stock.low).frame(width: 80, alignment: .trailing)
+                            Button(action: {
+                                self.stockVM.byDate()
+                            }){
+                                Text("Date")
+                                }.frame(width: 100, alignment: .leading).buttonStyle(BorderlessButtonStyle())
+                            Button(action: {
+                                self.stockVM.byOpen()
+                            }){
+                                Text("Open")
+                            }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
+                            Button(action: {
+                                self.stockVM.byHigh()
+                            }){
+                                Text("High")
+                                }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
+                            Button(action: {
+                                self.stockVM.byLow()
+                            }){
+                                Text("Low")
+                                }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
+                        }
+                        ForEach(self.stockVM.stocks) { stock in
+                            HStack {
+                                Text(stock.date).frame(width: 100, height: 50, alignment: .trailing)
+                                Text(stock.open).frame(width: 80, alignment: .trailing)
+                                Text(stock.high).frame(width: 80, alignment: .trailing)
+                                Text(stock.low).frame(width: 80, alignment: .trailing)
+                            }
                         }
                     }
+                }.navigationBarTitle(self.stockVM.title).onAppear() {
+                    self.stockVM.fetch(symbol: self.stockVM.symbol)
                 }
-            }.navigationBarTitle(stockVM.title).onAppear() {
-                self.stockVM.fetch(symbol: self.stockVM.symbol)
             }
         }
     }

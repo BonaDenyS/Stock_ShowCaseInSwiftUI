@@ -22,6 +22,8 @@ class CompareViewModel: ObservableObject {
     @Published var buttonA = "+"
     @Published var buttonB = "+"
     @Published var buttonC = "+"
+    
+    @Published var loading = false
 
     let title = "Compare Stock"
     
@@ -57,7 +59,7 @@ class CompareViewModel: ObservableObject {
             Query.interval: Interval.ts5.rawValue,
             Query.symbol: symbol
         ]
-        
+        self.loading = true
         HTTPManager().network(queries: queries) { stocks in
             switch(tagStock){
             case TagStock.A : self.stocksA = stocks
@@ -67,6 +69,7 @@ class CompareViewModel: ObservableObject {
             default : self.stocksC = stocks
                 break
             }
+            self.loading = false
         }
     }
 }

@@ -11,6 +11,7 @@ import Foundation
 class StockViewModel: ObservableObject {
         
     @Published var stocks = [Stock]()
+    @Published var loading = false
         
     let title = "Stock Today"
     let symbol = "AAPL"
@@ -54,9 +55,10 @@ class StockViewModel: ObservableObject {
             Query.interval: Interval.ts5.rawValue,
             Query.symbol: symbol
         ]
-        
+        self.loading = true
         HTTPManager().network(queries: queries) { (stocks) in
             self.stocks = stocks
+            self.loading = false
         }
     }
 }
