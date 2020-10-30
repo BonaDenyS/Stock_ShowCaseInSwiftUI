@@ -19,11 +19,11 @@ struct ContentView: View {
         GeometryReader { metrics in
             VStack {
                 if self.selected == 0 {
-                    StockView(stockVM: self.stockVM)
+                    StockView(viewModel: self.stockVM)
                 }else if self.selected == 1 {
-                    CompareView(compareVM: self.compareVM)
+                    CompareView(viewModel: self.compareVM)
                 }else {
-                    
+                    SettingView(viewModel: SettingViewModel())
                 }
                 
                 HStack {

@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct CompareView: View {
-    @ObservedObject var compareVM: CompareViewModel
+    @ObservedObject var viewModel: CompareViewModel
     
     let stockA = Color.init(red: 79/255, green: 193/255, blue: 233/255)
     let stockB = Color.init(red: 236/255, green: 135/255, blue: 192/255)
@@ -17,21 +17,22 @@ struct CompareView: View {
 
     var body: some View {
         NavigationView {
-            LoadingView(isShowing: .constant(self.compareVM.loading)) {
+            LoadingView(isShowing: .constant(self.viewModel.loading)) {
                 GeometryReader { metrics in
                     VStack {
                         HStack {
-                            HeaderView(compareVM: self.compareVM, stockA: self.stockA, stockB: self.stockB, stockC: self.stockC)
+                            HeaderView(viewModel: self.viewModel, stockA: self.stockA, stockB: self.stockB, stockC: self.stockC)
                         }.frame(height: metrics.size.height * 0.15)
                         
                         List {
-                            ForEach(0..<self.compareVM.higest().count, id: \.self) { iterator in
+                            ForEach(0..<self.viewModel.higest().count, id: \.self) { iterator in
                                 VStack {
-                                    BodyView(compareVM: self.compareVM, stockA: self.stockA, stockB: self.stockB, stockC: self.stockC, i: iterator)
+                                    BodyView(viewModel: self.viewModel, stockA: self.stockA, stockB: self.stockB, stockC: self.stockC, i: iterator)
                                 }.frame(height: 100,alignment: .leading)
                             }
-                        }.frame(height: metrics.size.height * 0.9, alignment: .leading)
-                    }.navigationBarTitle(self.compareVM.title)
+                        }.frame(height: metrics.size.height * 0.84, alignment: .leading)
+                        Spacer().frame(height: metrics.size.height * 0.01)
+                    }.navigationBarTitle(self.viewModel.title)
                 }
             }
         }
@@ -39,7 +40,7 @@ struct CompareView: View {
 }
 
 struct BodyView: View {
-    @ObservedObject var compareVM: CompareViewModel
+    @ObservedObject var viewModel: CompareViewModel
     
     var stockA: Color
     var stockB: Color
@@ -56,12 +57,12 @@ struct BodyView: View {
                         Text("Low :").frame(width: 100, alignment: .trailing)
                         Text("Close :").frame(width: 100, alignment: .trailing)
                     }.frame(width: metrics.size.width * 0.20,alignment: .trailing)
-                    if self.compareVM.stocksA.count > 0 && self.i < self.compareVM.stocksA.count {
+                    if self.viewModel.stocksA.count > 0 && self.i < self.viewModel.stocksA.count {
                         VStack {
-                            Text(self.compareVM.stocksA[self.i].open).frame(width: 100, alignment: .trailing)
-                            Text(self.compareVM.stocksA[self.i].high).frame(width: 100, alignment: .trailing)
-                            Text(self.compareVM.stocksA[self.i].low).frame(width: 100, alignment: .trailing)
-                            Text(self.compareVM.stocksA[self.i].close).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksA[self.i].open).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksA[self.i].high).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksA[self.i].low).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksA[self.i].close).frame(width: 100, alignment: .trailing)
                         }.frame(width: metrics.size.width * 0.24,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockA).cornerRadius(5)
                     }else{
                         VStack {
@@ -71,12 +72,12 @@ struct BodyView: View {
                             Text("-").frame(width: 100, alignment: .center)
                         }.frame(width: metrics.size.width * 0.24,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockA).cornerRadius(5)
                     }
-                    if self.compareVM.stocksB.count > 0 && self.i < self.compareVM.stocksB.count {
+                    if self.viewModel.stocksB.count > 0 && self.i < self.viewModel.stocksB.count {
                         VStack {
-                            Text(self.compareVM.stocksB[self.i].open).frame(width: 100, alignment: .trailing)
-                            Text(self.compareVM.stocksB[self.i].high).frame(width: 100, alignment: .trailing)
-                            Text(self.compareVM.stocksB[self.i].low).frame(width: 100, alignment: .trailing)
-                            Text(self.compareVM.stocksB[self.i].close).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksB[self.i].open).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksB[self.i].high).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksB[self.i].low).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksB[self.i].close).frame(width: 100, alignment: .trailing)
                         }.frame(width: metrics.size.width * 0.24,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockB).cornerRadius(5)
                     }else{
                         VStack {
@@ -86,12 +87,12 @@ struct BodyView: View {
                             Text("-").frame(width: 100, alignment: .center)
                         }.frame(width: metrics.size.width * 0.24,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockB).cornerRadius(5)
                     }
-                    if self.compareVM.stocksC.count > 0 && self.i < self.compareVM.stocksC.count {
+                    if self.viewModel.stocksC.count > 0 && self.i < self.viewModel.stocksC.count {
                         VStack {
-                            Text(self.compareVM.stocksC[self.i].open).frame(width: 100, alignment: .trailing)
-                            Text(self.compareVM.stocksC[self.i].high).frame(width: 100, alignment: .trailing)
-                            Text(self.compareVM.stocksC[self.i].low).frame(width: 100, alignment: .trailing)
-                            Text(self.compareVM.stocksC[self.i].close).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksC[self.i].open).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksC[self.i].high).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksC[self.i].low).frame(width: 100, alignment: .trailing)
+                            Text(self.viewModel.stocksC[self.i].close).frame(width: 100, alignment: .trailing)
                         }.frame(width: metrics.size.width * 0.24,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockC).cornerRadius(5)
                     }else{
                         VStack {
@@ -103,8 +104,8 @@ struct BodyView: View {
                     }
                 }
                 HStack {
-                    if self.compareVM.higest().count > 0 {
-                        Text(self.compareVM.higest()[self.i].date).frame(alignment: .center)
+                    if self.viewModel.higest().count > 0 {
+                        Text(self.viewModel.higest()[self.i].date).frame(alignment: .center)
                     }else{
                         Text("-").frame(alignment: .center)
                     }
@@ -115,7 +116,7 @@ struct BodyView: View {
 }
 
 struct HeaderView: View {
-    @ObservedObject var compareVM: CompareViewModel
+    @ObservedObject var viewModel: CompareViewModel
     
     var stockA: Color
     var stockB: Color
@@ -126,24 +127,24 @@ struct HeaderView: View {
             HStack{
                 Spacer().frame(width: metrics.size.width * 0.2, alignment: .leading)
                 Button(action: {
-                    self.compareVM.fetch(tagStock: TagStock.A, symbol: "AAPL")
-                    self.compareVM.buttonA = "AAPL"
+                    self.viewModel.fetch(tagStock: TagStock.A, symbol: "AAPL")
+                    self.viewModel.buttonA = "AAPL"
                 }) {
-                    Text(self.compareVM.buttonA).bold().foregroundColor(.white)
+                    Text(self.viewModel.buttonA).bold().foregroundColor(.white)
                 }.frame(width: metrics.size.width * 0.24, height: metrics.size.width * 0.2, alignment: .center)
                     .background(self.stockA).cornerRadius(10)
                 Button(action: {
-                    self.compareVM.fetch(tagStock: TagStock.B, symbol: "UNVR")
-                    self.compareVM.buttonB = "UNVR"
+                    self.viewModel.fetch(tagStock: TagStock.B, symbol: "UNVR")
+                    self.viewModel.buttonB = "UNVR"
                 }) {
-                    Text(self.compareVM.buttonB).bold().foregroundColor(.white)
+                    Text(self.viewModel.buttonB).bold().foregroundColor(.white)
                 }.frame(width: metrics.size.width * 0.24, height: metrics.size.width * 0.2, alignment: .center)
                     .background(self.stockB).cornerRadius(10)
                 Button(action: {
-                    self.compareVM.fetch(tagStock: TagStock.C, symbol: "IBM")
-                    self.compareVM.buttonC = "IBM"
+                    self.viewModel.fetch(tagStock: TagStock.C, symbol: "IBM")
+                    self.viewModel.buttonC = "IBM"
                 }) {
-                    Text(self.compareVM.buttonC).bold().foregroundColor(.white)
+                    Text(self.viewModel.buttonC).bold().foregroundColor(.white)
                 }.frame(width: metrics.size.width * 0.24, height: metrics.size.width * 0.2, alignment: .center)
                     .background(self.stockC).cornerRadius(10)
             }.frame(width: metrics.size.width, alignment: .center).padding(.top)
@@ -153,6 +154,6 @@ struct HeaderView: View {
 
 struct CompareView_Previews: PreviewProvider {
     static var previews: some View {
-        CompareView(compareVM: CompareViewModel())
+        CompareView(viewModel: CompareViewModel())
     }
 }

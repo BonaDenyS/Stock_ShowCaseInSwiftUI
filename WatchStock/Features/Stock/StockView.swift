@@ -9,37 +9,37 @@
 import SwiftUI
 
 struct StockView: View {
-    @ObservedObject var stockVM: StockViewModel
+    @ObservedObject var viewModel: StockViewModel
         
     var body: some View {
         NavigationView {
-            LoadingView(isShowing: .constant(stockVM.loading)) {
+            LoadingView(isShowing: .constant(viewModel.loading)) {
                 VStack {
-                    SearchbarView(stockVM: self.stockVM)
+                    SearchbarView(viewModel: self.viewModel)
                     List {
                         HStack {
                             Button(action: {
-                                self.stockVM.byDate()
+                                self.viewModel.byDate()
                             }){
                                 Text("Date")
                                 }.frame(width: 100, alignment: .leading).buttonStyle(BorderlessButtonStyle())
                             Button(action: {
-                                self.stockVM.byOpen()
+                                self.viewModel.byOpen()
                             }){
                                 Text("Open")
                             }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
                             Button(action: {
-                                self.stockVM.byHigh()
+                                self.viewModel.byHigh()
                             }){
                                 Text("High")
                                 }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
                             Button(action: {
-                                self.stockVM.byLow()
+                                self.viewModel.byLow()
                             }){
                                 Text("Low")
                                 }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
                         }
-                        ForEach(self.stockVM.stocks) { stock in
+                        ForEach(self.viewModel.stocks) { stock in
                             HStack {
                                 Text(stock.date).frame(width: 100, height: 50, alignment: .trailing)
                                 Text(stock.open).frame(width: 80, alignment: .trailing)
@@ -48,8 +48,8 @@ struct StockView: View {
                             }
                         }
                     }
-                }.navigationBarTitle(self.stockVM.title).onAppear() {
-                    self.stockVM.fetch(symbol: self.stockVM.symbol)
+                }.navigationBarTitle(self.viewModel.title).onAppear() {
+                    self.viewModel.fetch(symbol: self.viewModel.symbol)
                 }
             }
         }
@@ -57,7 +57,7 @@ struct StockView: View {
 }
 
 struct SearchbarView: View {
-    @ObservedObject var stockVM: StockViewModel
+    @ObservedObject var viewModel: StockViewModel
     
     @State private var showCancelButton: Bool = false
     @State private var searchText = ""
@@ -66,7 +66,7 @@ struct SearchbarView: View {
         HStack {
             HStack {
                 Button(action: {
-                    self.stockVM.fetch(symbol: self.searchText)
+                    self.viewModel.fetch(symbol: self.searchText)
                 }) {
                      Image(systemName: "magnifyingglass")
                 }
@@ -74,7 +74,7 @@ struct SearchbarView: View {
                 TextField("search", text: $searchText, onEditingChanged: { isEditing in
                     self.showCancelButton = true
                 }, onCommit: {
-                    self.stockVM.fetch(symbol: self.searchText)
+                    self.viewModel.fetch(symbol: self.searchText)
                 }).foregroundColor(.primary)
 
                 Button(action: {
@@ -110,6 +110,6 @@ extension UIApplication {
 
 struct StockView_Previews: PreviewProvider {
     static var previews: some View {
-        StockView(stockVM: StockViewModel())
+        StockView(viewModel: StockViewModel())
     }
 }
