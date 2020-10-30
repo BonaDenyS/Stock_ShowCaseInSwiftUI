@@ -28,18 +28,11 @@ class CompareViewModel: ObservableObject {
     let title = "Compare Stock"
     
     func higest() -> [Stock] {
-        print("Stocks A = \(self.stocksA.count)")
-        print("Stocks B = \(self.stocksB.count)")
-        print("Stocks C = \(self.stocksC.count)")
-        
         if(stocksA.count > stocksB.count && stocksA.count > stocksC.count){
-            print("Higest Stock = \(self.stocksA.count)")
             return stocksA
         }else if (stocksB.count > stocksC.count) {
-            print("Higest Stock = \(self.stocksB.count)")
             return stocksB
         }else{
-            print("Higest Stock = \(self.stocksC.count)")
             return stocksC
         }
     }

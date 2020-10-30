@@ -103,7 +103,11 @@ struct BodyView: View {
                     }
                 }
                 HStack {
-                    Text(self.compareVM.higest()[self.i].date).frame(alignment: .center)
+                    if self.compareVM.higest().count > 0 {
+                        Text(self.compareVM.higest()[self.i].date).frame(alignment: .center)
+                    }else{
+                        Text("-").frame(alignment: .center)
+                    }
                 }
             }
         }

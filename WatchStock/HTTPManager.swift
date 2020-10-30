@@ -31,7 +31,7 @@ enum Function: String {
 }
 
 class HTTPManager {
-    private var base_key = "T9SRHE6XMYNUBAJ9"
+    private var base_key = "USE_YOUR_OWN"
     private var outputsize = "compact"
     
     private let base_url = "https://www.alphavantage.co/"
