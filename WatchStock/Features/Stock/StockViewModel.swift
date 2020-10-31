@@ -12,9 +12,9 @@ class StockViewModel: ObservableObject {
         
     @Published var stocks = [Stock]()
     @Published var loading = false
+    @Published var symbol = "AAPL"
         
     let title = "Stock Today"
-    let symbol = "AAPL"
     
     private var sortByDate = false
     private var sortByOpen = false
