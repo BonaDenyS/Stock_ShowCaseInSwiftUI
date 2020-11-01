@@ -31,13 +31,26 @@ enum Function: String {
 }
 
 class HTTPManager {
-    private var base_key = "USE_YOUR_OWN"
+    private var base_key = "USE_YOUR_OWN_API_KEY"
     private var outputsize = "compact"
+    private var interval = "5min"
     
     private let base_url = "https://www.alphavantage.co/"
     private var stocks: [Stock] = []
     
+    init() {
+        self.base_key = KeychainSwift().get(Query.apikey.rawValue)!
+        
+        if let interval = UserDefaults.standard.string(forKey: Query.interval.rawValue) {
+            self.interval = interval
+        }
+        if let size = UserDefaults.standard.string(forKey: Query.outputsize.rawValue) {
+            self.outputsize = size
+        }
+    }
+    
     func network(queries: [Query:String], completion: @escaping ([Stock]) -> Void) {
+        print(query(queries: queries))
         URLSession.shared.dataTask(with: query(queries: queries)) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data else { return }

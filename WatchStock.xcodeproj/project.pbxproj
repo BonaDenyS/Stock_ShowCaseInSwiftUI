@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1E97CE254E717000D82C85 /* KeychainSwiftAccessOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1E97CB254E716F00D82C85 /* KeychainSwiftAccessOptions.swift */; };
+		5D1E97CF254E717000D82C85 /* KeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1E97CC254E716F00D82C85 /* KeychainSwift.swift */; };
+		5D1E97D0254E717000D82C85 /* TegKeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1E97CD254E716F00D82C85 /* TegKeychainConstants.swift */; };
 		5D8A3E4D253426EB00A0FA59 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8A3E4C253426EB00A0FA59 /* CompareView.swift */; };
 		5D8A3E4F2534356100A0FA59 /* CompareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8A3E4E2534356100A0FA59 /* CompareViewModel.swift */; };
 		5DB467BE2531E1E00027FD2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB467BD2531E1E00027FD2F /* AppDelegate.swift */; };
@@ -44,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D1E97CB254E716F00D82C85 /* KeychainSwiftAccessOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwiftAccessOptions.swift; sourceTree = "<group>"; };
+		5D1E97CC254E716F00D82C85 /* KeychainSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwift.swift; sourceTree = "<group>"; };
+		5D1E97CD254E716F00D82C85 /* TegKeychainConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegKeychainConstants.swift; sourceTree = "<group>"; };
 		5D8A3E4C253426EB00A0FA59 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
 		5D8A3E4E2534356100A0FA59 /* CompareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareViewModel.swift; sourceTree = "<group>"; };
 		5DB467BA2531E1E00027FD2F /* WatchStock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchStock.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +204,9 @@
 		5DB5572A2549339A0055E767 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				5D1E97CC254E716F00D82C85 /* KeychainSwift.swift */,
+				5D1E97CB254E716F00D82C85 /* KeychainSwiftAccessOptions.swift */,
+				5D1E97CD254E716F00D82C85 /* TegKeychainConstants.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -347,11 +356,14 @@
 				5DB467FA253411CA0027FD2F /* StockView.swift in Sources */,
 				5DB5572E2549587C0055E767 /* LoadingView.swift in Sources */,
 				5DB467C22531E1E00027FD2F /* ContentView.swift in Sources */,
+				5D1E97D0254E717000D82C85 /* TegKeychainConstants.swift in Sources */,
+				5D1E97CE254E717000D82C85 /* KeychainSwiftAccessOptions.swift in Sources */,
 				5D8A3E4F2534356100A0FA59 /* CompareViewModel.swift in Sources */,
 				5DB467F82534113C0027FD2F /* StockViewModel.swift in Sources */,
 				5DE6C5D4254BEF2B0014C5F6 /* SettingViewModel.swift in Sources */,
 				5DB467F02533FDBE0027FD2F /* Stock.swift in Sources */,
 				5D8A3E4D253426EB00A0FA59 /* CompareView.swift in Sources */,
+				5D1E97CF254E717000D82C85 /* KeychainSwift.swift in Sources */,
 				5DB467EE25330D490027FD2F /* HTTPManager.swift in Sources */,
 				5DE6C5D2254BEE7B0014C5F6 /* SettingView.swift in Sources */,
 			);

@@ -59,6 +59,7 @@ class StockViewModel: ObservableObject {
         HTTPManager().network(queries: queries) { (stocks) in
             self.stocks = stocks
             self.loading = false
+            self.symbol = (stocks.count > 0 ? self.symbol : "-")
         }
     }
 }
