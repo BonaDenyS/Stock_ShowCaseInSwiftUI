@@ -39,8 +39,9 @@ class HTTPManager {
     private var stocks: [Stock] = []
     
     init() {
-        self.base_key = KeychainSwift().get(Query.apikey.rawValue)!
-        
+        if let receivedData = KeychainSwift().get(Query.apikey.rawValue) {
+             self.base_key = receivedData
+        }        
         if let interval = UserDefaults.standard.string(forKey: Query.interval.rawValue) {
             self.interval = interval
         }
@@ -50,7 +51,6 @@ class HTTPManager {
     }
     
     func network(queries: [Query:String], completion: @escaping ([Stock]) -> Void) {
-        print(query(queries: queries))
         URLSession.shared.dataTask(with: query(queries: queries)) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data else { return }

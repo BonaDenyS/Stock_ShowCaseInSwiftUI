@@ -14,6 +14,7 @@ struct ContentView: View {
         
     var stockVM = StockViewModel()
     var compareVM = CompareViewModel()
+    var settingVM = SettingViewModel()
 
     var body: some View {
         GeometryReader { metrics in
@@ -23,7 +24,7 @@ struct ContentView: View {
                 }else if self.selected == 1 {
                     CompareView(viewModel: self.compareVM)
                 }else {
-                    SettingView(viewModel: SettingViewModel())
+                    SettingView(viewModel: self.settingVM)
                 }
                 
                 HStack {

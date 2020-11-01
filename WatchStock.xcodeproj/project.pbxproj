@@ -100,6 +100,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D1E97D1254E7CC200D82C85 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				5DB5572D2549587C0055E767 /* LoadingView.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		5D1E97D2254E7CF100D82C85 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5DB467ED25330D490027FD2F /* HTTPManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		5DB467B12531E1E00027FD2F = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +139,7 @@
 		5DB467BC2531E1E00027FD2F /* WatchStock */ = {
 			isa = PBXGroup;
 			children = (
+				5D1E97D2254E7CF100D82C85 /* Network */,
 				5DB5572A2549339A0055E767 /* Util */,
 				5DB467FC2534132E0027FD2F /* Model */,
 				5DB467F32534100E0027FD2F /* Features */,
@@ -133,7 +150,6 @@
 				5DB467C82531E1E10027FD2F /* LaunchScreen.storyboard */,
 				5DB467CB2531E1E10027FD2F /* Info.plist */,
 				5DB467C52531E1E10027FD2F /* Preview Content */,
-				5DB467ED25330D490027FD2F /* HTTPManager.swift */,
 			);
 			path = WatchStock;
 			sourceTree = "<group>";
@@ -167,10 +183,10 @@
 		5DB467F32534100E0027FD2F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				5D1E97D1254E7CC200D82C85 /* Reusable */,
 				5DE6C5D0254BEE5D0014C5F6 /* Setting */,
 				5DB467FB2534130D0027FD2F /* Compare */,
 				5DB467F42534101C0027FD2F /* Stock */,
-				5DB5572D2549587C0055E767 /* LoadingView.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";

@@ -28,25 +28,24 @@ struct SettingView: View {
                                 Text("15 min").tag(2)
                                 Text("30 min").tag(3)
                                 Text("60 min").tag(4)
+                                .navigationBarTitle("Interval")
                             }
                             Picker(selection: self.$f_size, label: Text("Size")) {
                                 Text("Compact").tag(0)
                                 Text("Full").tag(1)
+                                .navigationBarTitle("Size")
                             }
                         }
                         Button(action: {
                             self.viewModel.setPreference(self.f_apikey, self.viewModel.intervalList[self.f_interval], self.viewModel.sizeList[self.f_size])
                         }) {
                             Text("Apply")
-                            }.frame(height: 5).padding()
+                        }.frame(height: 5).padding()
                         Spacer()
                     }.navigationBarTitle(self.viewModel.title)
                 }
             }.onAppear {
-                if let receivedData = KeychainSwift().get(Query.apikey.rawValue) {
-                    self.f_apikey = receivedData
-                    print(receivedData)
-                }
+                self.viewModel.refresh(&self.f_apikey, &self.f_interval, &self.f_size)
             }
         }
     }

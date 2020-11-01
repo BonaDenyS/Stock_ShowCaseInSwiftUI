@@ -50,6 +50,7 @@ struct StockView: View {
                     }
                 }.navigationBarTitle("\(self.viewModel.title) : \(self.viewModel.symbol)")
             }.onAppear() {
+                self.viewModel.refresh()
                 self.viewModel.fetch(symbol: self.viewModel.symbol)
             }
         }

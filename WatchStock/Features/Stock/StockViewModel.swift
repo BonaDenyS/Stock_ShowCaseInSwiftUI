@@ -49,6 +49,10 @@ class StockViewModel: ObservableObject {
         self.sortByLow = (sortByLow == false ? true : false)
     }
     
+    func refresh() {
+        self.symbol = "AAPL"
+    }
+    
     func fetch(symbol: String) {
         let queries = [
             Query.function:Function.intraday.rawValue,
@@ -56,7 +60,7 @@ class StockViewModel: ObservableObject {
             Query.symbol: symbol
         ]
         self.loading = true
-        HTTPManager().network(queries: queries) { (stocks) in
+        HTTPManager().network(queries: queries) { [unowned self] (stocks) in
             self.stocks = stocks
             self.loading = false
             self.symbol = (stocks.count > 0 ? self.symbol : "-")
