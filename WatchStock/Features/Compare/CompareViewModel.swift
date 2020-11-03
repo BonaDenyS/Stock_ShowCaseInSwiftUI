@@ -37,15 +37,6 @@ class CompareViewModel: ObservableObject {
         }
     }
     
-
-    func stocks() -> [TagStock: [Stock]] {
-        return [
-            TagStock.A: self.stocksA,
-            TagStock.B: self.stocksB,
-            TagStock.C: self.stocksC
-        ]
-    }
-    
     func fetch(tagStock: TagStock, symbol: String) {
         let queries = [
             Query.function:Function.intraday.rawValue,
@@ -53,16 +44,24 @@ class CompareViewModel: ObservableObject {
             Query.symbol: symbol
         ]
         self.loading = true
-        HTTPManager().network(queries: queries) { stocks in
-            switch(tagStock){
-            case TagStock.A : self.stocksA = stocks
-                break
-            case TagStock.B : self.stocksB = stocks
-                break
-            default : self.stocksC = stocks
-                break
+        
+        HTTPManager().network(queries: queries) { (result) in
+            switch result {
+                case .success(let stocks): self.whichStocks(tagStock, stocks)
+                case .failure(let error) : print("Failed to fetch stocks :", error)
             }
             self.loading = false
+        }
+    }
+    
+    fileprivate func whichStocks(_ tagStock: TagStock, _ stocks: [Stock]) {
+        switch(tagStock){
+        case TagStock.A : self.stocksA = stocks
+            break
+        case TagStock.B : self.stocksB = stocks
+            break
+        default : self.stocksC = stocks
+            break
         }
     }
 }

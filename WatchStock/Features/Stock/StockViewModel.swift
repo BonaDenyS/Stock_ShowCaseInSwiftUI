@@ -25,28 +25,28 @@ class StockViewModel: ObservableObject {
         self.stocks.sort { (aStock,bStock) -> Bool in
             aStock.date.compare(bStock.date) == (sortByDate == false ? .orderedDescending : .orderedAscending)
         }
-        self.sortByDate = (sortByDate == false ? true : false)
+        self.sortByDate.toggle()
     }
     
     func byOpen() {
         self.stocks.sort { (aStock,bStock) -> Bool in
             aStock.open.compare(bStock.open) == (sortByOpen == false ? .orderedDescending : .orderedAscending)
         }
-        self.sortByOpen = (sortByOpen == false ? true : false)
+        self.sortByOpen.toggle()
     }
     
     func byHigh() {
         self.stocks.sort { (aStock,bStock) -> Bool in
             aStock.high.compare(bStock.high) == (sortByHigh == false ? .orderedDescending : .orderedAscending)
         }
-        self.sortByHigh = (sortByHigh == false ? true : false)
+        self.sortByHigh.toggle()
     }
     
     func byLow() {
         self.stocks.sort { (aStock,bStock) -> Bool in
             aStock.low.compare(bStock.low) == (sortByLow == false ? .orderedDescending : .orderedAscending)
         }
-        self.sortByLow = (sortByLow == false ? true : false)
+        self.sortByLow.toggle()
     }
     
     func refresh() {
@@ -60,10 +60,13 @@ class StockViewModel: ObservableObject {
             Query.symbol: symbol
         ]
         self.loading = true
-        HTTPManager().network(queries: queries) { [unowned self] (stocks) in
-            self.stocks = stocks
+        HTTPManager().network(queries: queries) { (result) in
+            switch result {
+                case .success(let stocks): self.stocks = stocks
+                case .failure(let error) : print("Failed to fetch stocks :", error)
+            }
+            self.symbol = self.stocks.count > 0 ? symbol : "-"
             self.loading = false
-            self.symbol = (stocks.count > 0 ? self.symbol : "-")
         }
     }
 }

@@ -36,7 +36,6 @@ class HTTPManager {
     private var interval = "5min"
     
     private let base_url = "https://www.alphavantage.co/"
-    private var stocks: [Stock] = []
     
     init() {
         if let receivedData = KeychainSwift().get(Query.apikey.rawValue) {
@@ -50,28 +49,36 @@ class HTTPManager {
         }
     }
     
-    func network(queries: [Query:String], completion: @escaping ([Stock]) -> Void) {
+    func network(queries: [Query:String], completion: @escaping (Result<[Stock], Error>) -> Void) {
         URLSession.shared.dataTask(with: query(queries: queries)) { (data, response, error) in
             DispatchQueue.main.async {
-                guard let data = data else { return }
-                let rawData = try! JSONSerialization.jsonObject(with: data) as! NSDictionary
-                if let stocks = rawData["Time Series (\(queries[Query.interval]!))"] as? NSDictionary { //Make it properly Query.interval
-                    for i in 0..<stocks.count{
-                        self.stocks.append(
-                            Stock(date: stocks.allKeys[i] as! String,
-                                  open: (stocks.allValues[i] as! NSDictionary).allValues[0] as! String,
-                                  high: (stocks.allValues[i] as! NSDictionary).allValues[1] as! String,
-                                  low: (stocks.allValues[i] as! NSDictionary).allValues[2] as! String,
-                                  close: (stocks.allValues[i] as! NSDictionary).allValues[3] as! String,
-                                  volume: (stocks.allValues[i] as! NSDictionary).allValues[4] as! String
-                            )
-                        )
-                    }
-                    completion(self.stocks)
-                }else{
-                    print("error: \(rawData)")
-                    completion(self.stocks)
+                
+                if let error = error {
+                    completion(.failure(error))
+                    return
                 }
+                
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
+                    if let raw = json["Time Series (\(queries[Query.interval]!))"] as? NSDictionary {
+                        let stocks: [Stock] = raw.map { (key, values) in
+                            let values = (values as! NSDictionary).allValues
+                            return Stock(date: key as! String,
+                                open: values[0] as! String,
+                                high: values[1] as! String,
+                                low:  values[2] as! String,
+                                close: values[3] as! String,
+                                volume: values[4] as! String
+                            )
+                        }
+                        completion(.success(stocks))
+                    }else {
+                        completion(.success([Stock]()))
+                    }
+                } catch let jsonError {
+                    completion(.failure(jsonError))
+                }
+                
             }
         }.resume()
     }

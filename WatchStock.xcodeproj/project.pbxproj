@@ -25,6 +25,7 @@
 		5DB467F82534113C0027FD2F /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB467F72534113C0027FD2F /* StockViewModel.swift */; };
 		5DB467FA253411CA0027FD2F /* StockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB467F9253411CA0027FD2F /* StockView.swift */; };
 		5DB5572E2549587C0055E767 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5572D2549587C0055E767 /* LoadingView.swift */; };
+		5DD4F8F725503102001FDC16 /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD4F8F625503102001FDC16 /* KeychainTests.swift */; };
 		5DE6C5D2254BEE7B0014C5F6 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE6C5D1254BEE7B0014C5F6 /* SettingView.swift */; };
 		5DE6C5D4254BEF2B0014C5F6 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DE6C5D3254BEF2B0014C5F6 /* SettingViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,7 @@
 		5DB467F72534113C0027FD2F /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
 		5DB467F9253411CA0027FD2F /* StockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockView.swift; sourceTree = "<group>"; };
 		5DB5572D2549587C0055E767 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		5DD4F8F625503102001FDC16 /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
 		5DE6C5D1254BEE7B0014C5F6 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		5DE6C5D3254BEF2B0014C5F6 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				5DB467D42531E1E10027FD2F /* WatchStockTests.swift */,
+				5DD4F8F625503102001FDC16 /* KeychainTests.swift */,
 				5DB467D62531E1E10027FD2F /* Info.plist */,
 			);
 			path = WatchStockTests;
@@ -390,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DB467D52531E1E10027FD2F /* WatchStockTests.swift in Sources */,
+				5DD4F8F725503102001FDC16 /* KeychainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
