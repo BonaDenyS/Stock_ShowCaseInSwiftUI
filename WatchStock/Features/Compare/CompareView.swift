@@ -176,62 +176,62 @@ struct BodyView: View {
             VStack {
                 HStack {
                     VStack {
-                        Text("Open :").frame(width: 100, alignment: .trailing)
-                        Text("High :").frame(width: 100, alignment: .trailing)
-                        Text("Low :").frame(width: 100, alignment: .trailing)
-                        Text("Close :").frame(width: 100, alignment: .trailing)
+                        Text("Open :").font(.subheadline).frame(width: metrics.size.width * 0.14, alignment: .trailing)
+                        Text("High :").font(.subheadline).frame(width: metrics.size.width * 0.14, alignment: .trailing)
+                        Text("Low :").font(.subheadline).frame(width: metrics.size.width * 0.14, alignment: .trailing)
+                        Text("Close :").font(.subheadline).frame(width: metrics.size.width * 0.14, alignment: .trailing)
                     }.frame(width: metrics.size.width * 0.20,alignment: .trailing)
                     if self.viewModel.stocksA.count > 0 && self.i < self.viewModel.stocksA.count {
                         VStack {
-                            Text(self.viewModel.stocksA[self.i].open).frame(width: 100, alignment: .trailing)
-                            Text(self.viewModel.stocksA[self.i].high).frame(width: 100, alignment: .trailing)
-                            Text(self.viewModel.stocksA[self.i].low).frame(width: 100, alignment: .trailing)
-                            Text(self.viewModel.stocksA[self.i].close).frame(width: 100, alignment: .trailing)
-                        }.frame(width: metrics.size.width * 0.24,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockA).cornerRadius(5)
+                            Text(self.viewModel.stocksA[self.i].open).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                            Text(self.viewModel.stocksA[self.i].high).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                            Text(self.viewModel.stocksA[self.i].low).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                            Text(self.viewModel.stocksA[self.i].close).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                        }.frame(width: metrics.size.width * 0.22,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockA).cornerRadius(5)
                     }else{
                         VStack {
-                            Text("-").frame(width: 100, alignment: .center)
-                            Text("-").frame(width: 100, alignment: .center)
-                            Text("-").frame(width: 100, alignment: .center)
-                            Text("-").frame(width: 100, alignment: .center)
-                        }.frame(width: metrics.size.width * 0.24,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockA).cornerRadius(5)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                        }.frame(width: metrics.size.width * 0.22,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockA).cornerRadius(5)
                     }
                     if self.viewModel.stocksB.count > 0 && self.i < self.viewModel.stocksB.count {
                         VStack {
-                            Text(self.viewModel.stocksB[self.i].open).frame(width: 100, alignment: .trailing)
-                            Text(self.viewModel.stocksB[self.i].high).frame(width: 100, alignment: .trailing)
-                            Text(self.viewModel.stocksB[self.i].low).frame(width: 100, alignment: .trailing)
-                            Text(self.viewModel.stocksB[self.i].close).frame(width: 100, alignment: .trailing)
-                        }.frame(width: metrics.size.width * 0.24,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockB).cornerRadius(5)
+                            Text(self.viewModel.stocksB[self.i].open).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                            Text(self.viewModel.stocksB[self.i].high).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                            Text(self.viewModel.stocksB[self.i].low).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                            Text(self.viewModel.stocksB[self.i].close).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                        }.frame(width: metrics.size.width * 0.22,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockB).cornerRadius(5)
                     }else{
                         VStack {
-                            Text("-").frame(width: 100, alignment: .center)
-                            Text("-").frame(width: 100, alignment: .center)
-                            Text("-").frame(width: 100, alignment: .center)
-                            Text("-").frame(width: 100, alignment: .center)
-                        }.frame(width: metrics.size.width * 0.24,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockB).cornerRadius(5)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                        }.frame(width: metrics.size.width * 0.22,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockB).cornerRadius(5)
                     }
                     if self.viewModel.stocksC.count > 0 && self.i < self.viewModel.stocksC.count {
                         VStack {
-                            Text(self.viewModel.stocksC[self.i].open).frame(width: 100, alignment: .trailing)
-                            Text(self.viewModel.stocksC[self.i].high).frame(width: 100, alignment: .trailing)
-                            Text(self.viewModel.stocksC[self.i].low).frame(width: 100, alignment: .trailing)
-                            Text(self.viewModel.stocksC[self.i].close).frame(width: 100, alignment: .trailing)
-                        }.frame(width: metrics.size.width * 0.24,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockC).cornerRadius(5)
+                            Text(self.viewModel.stocksC[self.i].open).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                            Text(self.viewModel.stocksC[self.i].high).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                            Text(self.viewModel.stocksC[self.i].low).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                            Text(self.viewModel.stocksC[self.i].close).font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .trailing)
+                        }.frame(width: metrics.size.width * 0.22,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockC).cornerRadius(5)
                     }else{
                         VStack {
-                            Text("-").frame(width: 100, alignment: .center)
-                            Text("-").frame(width: 100, alignment: .center)
-                            Text("-").frame(width: 100, alignment: .center)
-                            Text("-").frame(width: 100, alignment: .center)
-                        }.frame(width: metrics.size.width * 0.24,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockC).cornerRadius(5)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                            Text("-").font(.system(size: 15)).frame(width: metrics.size.width * 0.22, alignment: .center)
+                        }.frame(width: metrics.size.width * 0.22,alignment: .trailing).foregroundColor(.white).padding(5).background(self.stockC).cornerRadius(5)
                     }
                 }
                 HStack {
                     if self.viewModel.higest().count > 0 {
-                        Text(self.viewModel.higest()[self.i].date).frame(alignment: .center)
+                        Text(self.viewModel.higest()[self.i].date).font(.system(size: 15)).frame(alignment: .center).padding(5)
                     }else{
-                        Text("-").frame(alignment: .center)
+                        Text("-").font(.system(size: 15)).frame(alignment: .center).padding(5)
                     }
                 }
             }
@@ -252,27 +252,27 @@ struct HeaderView: View {
     var body: some View {
         GeometryReader { metrics in
             HStack{
-                Spacer().frame(width: metrics.size.width * 0.2, alignment: .leading)
+                Spacer().frame(width: metrics.size.width * 0.20, alignment: .leading)
                 Button(action: {
                     self.stock =  1
                     self.searchSymbol.toggle()
                 }) {
                     Text(self.viewModel.buttonA).bold().foregroundColor(.white)
-                }.frame(width: metrics.size.width * 0.24, height: metrics.size.width * 0.2, alignment: .center)
+                }.frame(width: metrics.size.width * 0.23, height: metrics.size.width * 0.2, alignment: .center)
                     .background(self.stockA).cornerRadius(10)
                 Button(action: {
                     self.stock =  2
                     self.searchSymbol.toggle()
                 }) {
                     Text(self.viewModel.buttonB).bold().foregroundColor(.white)
-                }.frame(width: metrics.size.width * 0.24, height: metrics.size.width * 0.2, alignment: .center)
+                }.frame(width: metrics.size.width * 0.23, height: metrics.size.width * 0.2, alignment: .center)
                     .background(self.stockB).cornerRadius(10)
                 Button(action: {
                     self.stock =  3
                     self.searchSymbol.toggle()
                 }) {
                     Text(self.viewModel.buttonC).bold().foregroundColor(.white)
-                }.frame(width: metrics.size.width * 0.24, height: metrics.size.width * 0.2, alignment: .center)
+                }.frame(width: metrics.size.width * 0.23, height: metrics.size.width * 0.2, alignment: .center)
                     .background(self.stockC).cornerRadius(10)
             }.frame(width: metrics.size.width, alignment: .center).padding(.top)
         }

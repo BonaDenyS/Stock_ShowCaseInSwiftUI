@@ -9,7 +9,7 @@
 import Foundation
 
 struct Stock: Codable, Identifiable {
-    let id = UUID()
+    var id = UUID()
     let date, open, high, low, close, volume: String
     
 }

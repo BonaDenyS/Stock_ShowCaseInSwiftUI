@@ -18,6 +18,7 @@ class StockViewModel: ObservableObject {
     
     private var sortByDate = false
     private var sortByOpen = false
+    private var sortByClose = false
     private var sortByHigh = false
     private var sortByLow = false
 
@@ -33,6 +34,13 @@ class StockViewModel: ObservableObject {
             aStock.open.compare(bStock.open) == (sortByOpen == false ? .orderedDescending : .orderedAscending)
         }
         self.sortByOpen.toggle()
+    }
+    
+    func byClose() {
+        self.stocks.sort { (aStock,bStock) -> Bool in
+            aStock.close.compare(bStock.close) == (sortByClose == false ? .orderedDescending : .orderedAscending)
+        }
+        self.sortByClose.toggle()
     }
     
     func byHigh() {

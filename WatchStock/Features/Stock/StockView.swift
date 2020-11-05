@@ -16,35 +16,31 @@ struct StockView: View {
             LoadingView(isShowing: .constant(viewModel.loading)) {
                 VStack {
                     SearchbarView(viewModel: self.viewModel)
-                    List {
-                        HStack {
-                            Button(action: {
-                                self.viewModel.byDate()
-                            }){
-                                Text("Date")
-                                }.frame(width: 100, alignment: .leading).buttonStyle(BorderlessButtonStyle())
-                            Button(action: {
-                                self.viewModel.byOpen()
-                            }){
-                                Text("Open")
-                            }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
-                            Button(action: {
-                                self.viewModel.byHigh()
-                            }){
-                                Text("High")
-                                }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
-                            Button(action: {
-                                self.viewModel.byLow()
-                            }){
-                                Text("Low")
-                                }.frame(width: 80, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
-                        }
-                        ForEach(self.viewModel.stocks) { stock in
+                    GeometryReader { metrics in
+                        List {
                             HStack {
-                                Text(stock.date).frame(width: 100, height: 50, alignment: .trailing)
-                                Text(stock.open).frame(width: 80, alignment: .trailing)
-                                Text(stock.high).frame(width: 80, alignment: .trailing)
-                                Text(stock.low).frame(width: 80, alignment: .trailing)
+                                Button(action: {
+                                    self.viewModel.byDate()
+                                }){
+                                    Text("Date")
+                                }.frame(width: metrics.size.width * 0.27, alignment: .leading).buttonStyle(BorderlessButtonStyle())
+                                Button(action: {
+                                    self.viewModel.byHigh()
+                                }){
+                                    Text("Open")
+                                    }.frame(width: metrics.size.width * 0.3, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
+                                Button(action: {
+                                    self.viewModel.byLow()
+                                }){
+                                    Text("Close")
+                                }.frame(width: metrics.size.width * 0.3, alignment: .trailing).buttonStyle(BorderlessButtonStyle())
+                            }
+                            ForEach(self.viewModel.stocks) { stock in
+                                HStack {
+                                    Text(stock.date).frame(width: metrics.size.width * 0.27, height: 50, alignment: .trailing)
+                                    Text(stock.high).frame(width: metrics.size.width * 0.3, alignment: .trailing)
+                                    Text(stock.low).frame(width: metrics.size.width * 0.3, alignment: .trailing)
+                                }
                             }
                         }
                     }
