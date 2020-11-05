@@ -37,9 +37,9 @@ struct StockView: View {
                             }
                             ForEach(self.viewModel.stocks) { stock in
                                 HStack {
-                                    Text(stock.date).frame(width: metrics.size.width * 0.27, height: 50, alignment: .trailing)
-                                    Text(stock.high).frame(width: metrics.size.width * 0.3, alignment: .trailing)
-                                    Text(stock.low).frame(width: metrics.size.width * 0.3, alignment: .trailing)
+                                    Text(stock.date).frame(width: metrics.size.width * 0.27, height: 50, alignment: .leading)
+                                    Text(stock.open).frame(width: metrics.size.width * 0.3, alignment: .trailing)
+                                    Text(stock.close).frame(width: metrics.size.width * 0.3, alignment: .trailing)
                                 }
                             }
                         }
