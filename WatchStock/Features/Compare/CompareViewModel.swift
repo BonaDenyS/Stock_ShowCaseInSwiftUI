@@ -37,7 +37,7 @@ class CompareViewModel: ObservableObject {
         }
     }
     
-    func fetch(tagStock: TagStock, symbol: String) {
+    fileprivate func fetch(tagStock: TagStock, symbol: String) {
         let queries = [
             Query.function:Function.intraday.rawValue,
             Query.interval: Interval.ts5.rawValue,
@@ -63,5 +63,29 @@ class CompareViewModel: ObservableObject {
         default : self.stocksC = stocks
             break
         }
+    }
+    
+    func load(selected: inout Int, symbol: inout String, isLoading: inout Bool){
+        switch selected {
+            case 1 :
+                fetch(tagStock: TagStock.A, symbol: symbol)
+                buttonA = symbol
+                selected = 0
+                break
+            case 2 :
+                fetch(tagStock: TagStock.B, symbol: symbol)
+                buttonB = symbol
+                selected = 0
+                break
+            case 3 :
+                fetch(tagStock: TagStock.C, symbol: symbol)
+                buttonC = symbol
+                selected = 0
+                break
+            default: break
+        }
+        
+        symbol = ""
+        isLoading.toggle()
     }
 }
